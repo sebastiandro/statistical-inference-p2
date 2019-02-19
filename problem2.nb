@@ -1,0 +1,95 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2859,         87]
+NotebookOptionsPosition[      2464,         67]
+NotebookOutlinePosition[      2817,         83]
+CellTagsIndexPosition[      2774,         80]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem set 2: MLE for alpha \t", "Subsection",
+ CellChangeTimes->{{3.759212831432027*^9, 3.75921284928076*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", " ", "210"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"FindRoot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"n", "*", 
+      RowBox[{"Log", "[", "\[Alpha]", "]"}]}], "+", "105.1841", "-", " ", 
+     "177.6407", " ", "-", " ", 
+     RowBox[{"n", "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Gamma", "'"}], "[", "\[Alpha]", "]"}], "/", 
+        RowBox[{"Gamma", "[", "\[Alpha]", "]"}]}], ")"}]}]}], " ", "\[Equal]",
+     "0"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Alpha]", ",", "0.7992"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.759211431525033*^9, 3.759211442622427*^9}, {
+  3.759211480835479*^9, 3.759211490963827*^9}, {3.759211820185652*^9, 
+  3.7592119018807993`*^9}, {3.759212111012936*^9, 3.759212113860183*^9}, {
+  3.7592124687597227`*^9, 3.7592124743022842`*^9}, {3.759304333802553*^9, 
+  3.7593043682203283`*^9}, {3.759304414083671*^9, 3.759304533801414*^9}, {
+  3.759304572684647*^9, 3.759304573493826*^9}, {3.7593047502620983`*^9, 
+  3.7593047739988728`*^9}, {3.759304827844261*^9, 3.759304831260339*^9}, {
+  3.759304878228795*^9, 3.759304904372889*^9}, {3.759304939102132*^9, 
+  3.759304997375564*^9}, {3.7593050412430277`*^9, 3.759305041530169*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\[Alpha]", "\[Rule]", "1.5954079008224726`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.759211436928267*^9, 3.7592114581987553`*^9}, {
+   3.7592118842243557`*^9, 3.759211902128787*^9}, 3.7592121172332706`*^9, 
+   3.759304535158712*^9, {3.759304574422703*^9, 3.759304585579075*^9}, 
+   3.7593048376848173`*^9, 3.7593048790177307`*^9, {3.7593050020328283`*^9, 
+   3.7593050113675747`*^9}, 3.759305042281954*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 755},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 118, 1, 44, "Subsection"],
+Cell[CellGroupData[{
+Cell[723, 27, 1262, 27, 63, "Input"],
+Cell[1988, 56, 448, 7, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
