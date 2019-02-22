@@ -8,6 +8,8 @@ figure(1);
 clf;
 h = histogram(data, 20, 'BinWidth', bin_width);
 hold on;
+xlabel('t');
+ylabel('Number of whales');
 
 % Task b
 
@@ -39,23 +41,35 @@ legend('Real Data', sprintf('Gam(%0.2f, %0.2f) MME', a_hat_mme,l_hat_mme), sprin
 N = 1500;
 n = 200;
 
+% Draw N x n samples
 mme_gamma_dist_draws = random('Gamma', a_hat_mme, l_hat_mme, [N n]);
+% From each sample of size n, take the first moment. 
 mu1_mme_bootstrap = mean(mme_gamma_dist_draws, 2);
+% From each sample of size n, take the second moment. 
 mu2_mme_bootstrap = mean(mme_gamma_dist_draws .^2, 2);
+
+% create Nx1 vector of alpha mme estimates
 alphas = (mu1_mme_bootstrap.^2)./(mu2_mme_bootstrap - mu1_mme_bootstrap.^2);
+
+% create Nx1 vector of lambda mme estimates
 lambdas = alphas ./ mu1_mme_bootstrap;
 
 figure(2);
 clf;
 histogram(alphas, 20)
 title('MME Alpha Sampling Distribution')
+xlabel('\alpha')
+ylabel('Number of estimates')
+
 figure(3);
 clf;
 histogram(lambdas, 20)
+xlabel('\lambda')
+ylabel('Number of estimates')
 title('MME Lambda Sampling Distribution')
 
-fprintf('Standard error for MME alpha sampling distribution: %0.4f\n', std(alphas));
-fprintf('Standard error for MME lambda sampling distribution: %0.4f\n', std(lambdas))
+fprintf('Standard error for MME alpha sampling distribution: %0.4f\n', std(alphas) / sqrt(n));
+fprintf('Standard error for MME lambda sampling distribution: %0.4f\n', std(lambdas) / sqrt(n))
 
 %% Task f
 N = 1500;
@@ -65,26 +79,32 @@ mle_lambas_alphas = zeros(N,2);
 mle_gamma_dist_draws = random('Gamma', a_hat_mle, l_hat_mle, [N n]);
 for i = 1:N
     sample = mle_gamma_dist_draws(i,:);
+    % Here we use gamfit to find the MLE
     mle_lambas_alphas(i,:) = gamfit(sample);
 end
 % Plot alpha sampling distribution
 figure(4);
 histogram(mle_lambas_alphas(:,1),20)
 title('MLE Alpha Sampling Distribution')
+xlabel('\alpha')
+ylabel('Number of estimates')
 
 figure(5);
 % Plot lambda sampling distribution
 histogram(mle_lambas_alphas(:,2),20)
 title('MLE Lambda Sampling Distribution')
+xlabel('\lambda')
+ylabel('Number of estimates')
 
-mle_bootstrap_alpha_std = std(mle_lambas_alphas(:,1));
-mle_bootstrap_lambda_std = std(mle_lambas_alphas(:,2));
+mle_bootstrap_alpha_std = std(mle_lambas_alphas(:,1)) / sqrt(n);
+mle_bootstrap_lambda_std = std(mle_lambas_alphas(:,2) / sqrt(n));
 
 fprintf('Standard error for MLE alpha sampling distribution: %0.4f\n', mle_bootstrap_alpha_std);
 fprintf('Standard error for MLE lambda sampling distribution: %0.4f\n', mle_bootstrap_lambda_std)
 
 %% g
 mle_params_sorted = sort(mle_lambas_alphas);
+
 alpha_delta_lower = mle_params_sorted(round(N*0.05),1) - a_hat_mle;
 alpha_delta_upper = mle_params_sorted(round(N*0.95),1) - a_hat_mle;
 
